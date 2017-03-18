@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
@@ -15,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ImageButton pap,sci,sto;
     private ImageView imgPhoto;
+    private TextView txtShow ;
 
 
     @Override
@@ -26,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         sci = (ImageButton)findViewById(R.id.imageButton2);
         sto = (ImageButton)findViewById(R.id.imageButton3);
         imgPhoto = (ImageView) findViewById(R.id.imageView);
+        txtShow = (TextView) findViewById(R.id.textView);
 
         pap.setOnClickListener(paperListener);
         sci.setOnClickListener(scissorsListener);
@@ -44,6 +47,12 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v){
             shuffleArray(imgId);
             imgPhoto.setImageResource(imgId[0]);
+            if (imgId[0] == R.drawable.scissors)
+                txtShow.setText("平手");
+            else if(imgId[0] == R.drawable.paper)
+                txtShow.setText("勝利");
+            else if(imgId[0] == R.drawable.stone)
+                txtShow.setText("敗北");
         }
     };
     private ImageButton.OnClickListener stoneListener = new ImageButton.OnClickListener(){
