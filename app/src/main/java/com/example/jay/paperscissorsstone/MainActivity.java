@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -40,6 +40,12 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v){
             shuffleArray(imgId);
             imgPhoto.setImageResource(imgId[0]);
+            if (imgId[0] == R.drawable.paper)
+                txtShow.setText("平手");
+            else if(imgId[0] == R.drawable.stone)
+                txtShow.setText("勝利");
+            else
+                txtShow.setText("敗北");
         }
     };
     private ImageButton.OnClickListener scissorsListener = new ImageButton.OnClickListener(){
@@ -51,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
                 txtShow.setText("平手");
             else if(imgId[0] == R.drawable.paper)
                 txtShow.setText("勝利");
-            else if(imgId[0] == R.drawable.stone)
+            else
                 txtShow.setText("敗北");
         }
     };
@@ -60,6 +66,12 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v){
             shuffleArray(imgId);
             imgPhoto.setImageResource(imgId[0]);
+            if (imgId[0] == R.drawable.stone)
+                txtShow.setText("平手");
+            else if(imgId[0] == R.drawable.scissors)
+                txtShow.setText("勝利");
+            else
+                txtShow.setText("敗北");
         }
     };
     public static int[] shuffleArray(int[] array)
